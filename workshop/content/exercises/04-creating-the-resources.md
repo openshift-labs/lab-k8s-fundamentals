@@ -11,7 +11,7 @@ To actually deploy the database component, now run:
 kubectl apply -f database-all.yaml
 ```
 
-As with the dry run, `kubectl apply` will list the resources, except this time the resources will be created.
+As with the dry run, `kubectl apply` will list the resources, except this time the resources will be created as we didn't supply `--dry-run`.
 
 ```
 secret/blog-credentials created
@@ -30,7 +30,7 @@ kubectl rollout status deployment.extensions/blog-db
 
 The argument is the full name of the resource, including the type of resource and the name for this instance. In this case the instance was called `blog-db`.
 
-Similarly, to deploy the frontend component, run:
+To deploy the frontend component, now run:
 
 ```execute
 kubectl apply -f frontend-all.yaml
@@ -56,19 +56,8 @@ to monitor and wait for it to be deployed.
 
 In the resources created for the front end web application, the `ingress.extensions/blog` is special, in that it is what sets up access to our web application using a public URL.
 
-You can get a summary description of the resource by running:
-
-```execute
-kubectl get ingress.extensions/blog
-```
-
-This should display output similar to:
-
-```
-NAME  HOSTS                                        ADDRESS  PORTS  AGE
-blog  blog-%project_namespace%.%cluster_subdomain%  80       1m
-```
-
-The host name shown is that by which the web application can be accessed. Access it now at:
+In this example, the URL for accessing the web application will be:
 
 http://blog-%project_namespace%.%cluster_subdomain%
+
+There will not be any blog posts displayed as yet, we will get to setting up and populating the database later.
