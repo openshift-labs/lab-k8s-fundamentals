@@ -1,0 +1,4 @@
+#!/bin/bash
+
+envsubst < frontend-all.json.in > frontend-all.json
+envsubst < database-all.json.in > database-all.json

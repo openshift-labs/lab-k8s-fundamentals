@@ -1,0 +1,218 @@
+{
+    "apiVersion": "v1",
+    "kind": "List",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "ConfigMap",
+            "metadata": {
+                "name": "blog-settings",
+                "labels": {
+                    "app": "blog"
+                }
+            },
+            "data": {
+                "BLOG_BANNER_COLOR": "#db212e"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "PersistentVolumeClaim",
+            "metadata": {
+                "name": "blog-media",
+                "labels": {
+                    "app": "blog"
+                }
+            },
+            "spec": {
+                "accessModes": [
+                    "ReadWriteMany"
+                ],
+                "resources": {
+                    "requests": {
+                        "storage": "1Gi"
+                    }
+                }
+            }
+        },
+        {
+            "apiVersion": "extensions/v1beta1",
+            "kind": "Deployment",
+            "metadata": {
+                "name": "blog",
+                "labels": {
+                    "app": "blog"
+                }
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "blog"
+                    }
+                },
+                "strategy": {
+                    "type": "RollingUpdate",
+                    "rollingUpdate": {
+                        "maxSurge": "25%",
+                        "maxUnavailable": "25%"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "app": "blog"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "name": "blog-django-py",
+                                "image": "openshiftkatacoda/blog-django-py:latest",
+                                "imagePullPolicy": "IfNotPresent",
+                                "resources": {
+                                    "limits": {
+                                        "memory": "512Mi"
+                                    }
+                                },
+                                "env": [
+                                    {
+                                        "name": "BLOG_SITE_NAME",
+                                        "value": "OpenShift Blog"
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_USER",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "database-user",
+                                                "name": "blog-credentials"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_PASSWORD",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "database-password",
+                                                "name": "blog-credentials"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_DATABASE",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "database-name",
+                                                "name": "blog-credentials"
+                                            }
+                                        }
+                                    }
+                                ],
+				"readinessProbe": {
+				    "periodSeconds": 10,
+				    "timeoutSeconds": 1,
+				    "successThreshold": 1,
+				    "failureThreshold": 3,
+				    "httpGet": {
+					"scheme": "HTTP",
+					"port": 8080,
+					"path": "/healthz/ready"
+				    }
+				},
+				"livenessProbe": {
+				    "periodSeconds": 10,
+				    "timeoutSeconds": 1,
+				    "successThreshold": 1,
+				    "failureThreshold": 3,
+				    "httpGet": {
+					"scheme": "HTTP",
+					"port": 8080,
+					"path": "/healthz/alive"
+				    }
+				},
+                                "volumeMounts": [
+                                    {
+                                        "name": "media",
+                                        "mountPath": "/opt/app-root/src/media"
+                                    },
+				    {
+					"name": "settings",
+					"mountPath": "/opt/app-root/src/settings"
+				    }
+                                ]
+                            }
+                        ],
+                        "volumes": [
+                            {
+                                "name": "media",
+                                "persistentVolumeClaim": {
+                                    "claimName": "blog-media"
+                                }
+                            },
+			    {
+				"name": "settings",
+				"configMap": {
+				    "defaultMode": 420,
+				    "name": "blog-settings"
+				}
+			    }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "name": "blog",
+                "labels": {
+                    "app": "blog"
+                }
+            },
+            "spec": {
+                "type": "ClusterIP",
+                "selector": {
+                    "app": "blog"
+                },
+                "ports": [
+                    {
+                        "name": "8080-tcp",
+                        "port": 8080,
+                        "protocol": "TCP",
+                        "targetPort": 8080
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "extensions/v1beta1",
+            "kind": "Ingress",
+            "metadata": {
+                "name": "blog",
+                "labels": {
+                    "app": "blog"
+                }
+            },
+            "spec": {
+                "rules": [
+                    {
+                        "host": "blog-${PROJECT_NAMESPACE}.${CLUSTER_SUBDOMAIN}",
+                        "http": {
+                            "paths": [
+                                {
+                                    "path": "/",
+                                    "backend": {
+                                        "serviceName": "blog",
+                                        "servicePort": 8080
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+

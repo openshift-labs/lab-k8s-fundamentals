@@ -1,0 +1,176 @@
+{
+    "kind": "List",
+    "apiVersion": "v1",
+    "metadata": {},
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Secret",
+            "metadata": {
+                "name": "blog-credentials",
+                "labels": {
+                    "app": "blog-db"
+                }
+            },
+            "stringData": {
+                "database-name": "blog",
+                "database-user": "blog",
+                "database-password": "${PROJECT_NAMESPACE}"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "name": "blog-db",
+                "labels": {
+                    "app": "blog-db"
+                }
+            },
+            "spec": {
+                "type": "ClusterIP",
+                "ports": [
+                    {
+                        "name": "postgresql",
+                        "port": 5432,
+                        "protocol": "TCP",
+                        "targetPort": 5432
+                    }
+                ],
+                "selector": {
+                    "name": "blog-db"
+                }
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "PersistentVolumeClaim",
+            "metadata": {
+                "name": "blog-database",
+                "labels": {
+                    "app": "blog-db"
+                }
+            },
+            "spec": {
+                "accessModes": [
+                    "ReadWriteOnce"
+                ],
+                "resources": {
+                    "requests": {
+                        "storage": "1Gi"
+                    }
+                }
+            }
+        },
+        {
+            "apiVersion": "extensions/v1beta1",
+            "kind": "Deployment",
+            "metadata": {
+                "name": "blog-db",
+                "labels": {
+                    "app": "blog-db"
+                }
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "blog-db"
+                    }
+                },
+                "strategy": {
+                    "type": "Recreate"
+                },
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "app": "blog-db"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "name": "postgresql",
+                                "image": "centos/postgresql-96-centos7:latest",
+                                "imagePullPolicy": "IfNotPresent",
+                                "resources": {
+                                    "limits": {
+                                        "memory": "512Mi"
+                                    }
+                                },
+                                "env": [
+                                    {
+                                        "name": "POSTGRESQL_USER",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "database-user",
+                                                "name": "blog-credentials"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_PASSWORD",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "database-password",
+                                                "name": "blog-credentials"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "POSTGRESQL_DATABASE",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "database-name",
+                                                "name": "blog-credentials"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "livenessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "/usr/libexec/check-container",
+                                            "--live"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 120,
+                                    "timeoutSeconds": 10
+                                },
+                                "ports": [
+                                    {
+                                        "containerPort": 5432,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "readinessProbe": {
+                                    "exec": {
+                                        "command": [
+                                            "/usr/libexec/check-container"
+                                        ]
+                                    },
+                                    "initialDelaySeconds": 5,
+                                    "timeoutSeconds": 1
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "name": "data",
+                                        "mountPath": "/var/lib/pgsql/data"
+                                    }
+                                ]
+                            }
+                        ],
+                        "volumes": [
+                            {
+                                "name": "data",
+                                "persistentVolumeClaim": {
+                                    "claimName": "blog-database"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}
