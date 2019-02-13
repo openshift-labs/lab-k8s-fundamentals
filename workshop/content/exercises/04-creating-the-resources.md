@@ -1,6 +1,7 @@
 ---
 Title: Creating the Resources
 PrevPage: 03-deploying-an-application
+NextPage: 05-querying-the-resources
 ---
 
 By doing a dry run deployment, you have seen the resources that will be created from the `database-all.yaml` and `frontend-all.yaml` files which describe our application. You will note that for each application component, there isn't just one resource definition, but a number for each.
