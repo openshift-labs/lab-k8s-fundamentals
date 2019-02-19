@@ -44,7 +44,7 @@ items:
           app: blog
       spec:
         containers:
-        - name: blog-django-py
+        - name: frontend
           image: openshiftkatacoda/blog-django-py:latest
           imagePullPolicy: IfNotPresent
           resources:
