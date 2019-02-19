@@ -1,6 +1,7 @@
 ---
 Title: Querying the Resources
 PrevPage: 04-creating-the-resources
+NextPage: 06-labelling-of-resources
 ---
 
 The web console for a Kubernetes cluster can be used to display a visual representation, in your browser, of what resources have been created and the relationship between them, but most developers will interact with a Kubernetes cluster from the command line using `kubectl`.
