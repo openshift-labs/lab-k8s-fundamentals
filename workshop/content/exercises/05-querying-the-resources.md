@@ -27,7 +27,7 @@ blog-db   1         1         1            1           5m
 To narrow in on a specific resource, the name of that resource can be added to the command:
 
 ```execute
-kubectl get deployment.extensions blog
+kubectl get deployment.extensions/blog
 ```
 
 This should then yield output for just the one resource.
@@ -40,7 +40,7 @@ blog      2         2         2            2           5m
 The output format for the information displayed can be overridden. In many cases, a resource type can be made to display additional information in the table by using the `-o wide` option.
 
 ```execute
-kubectl get deployment.extensions blog -o wide
+kubectl get deployment.extensions/blog -o wide
 ```
 
 In the case of a deployment, this results in details of the containers that would be created from the deployment, the names of the images run to create the containers, and the set of labels applied to the instances of the application created from the deployment.
@@ -55,7 +55,7 @@ Labels in Kubernetes are very important and are used in various ways to create l
 To see much more detailed information about a resource `oc describe` can be used.
 
 ```execute
-kubectl describe deployment.extensions blog
+kubectl describe deployment.extensions/blog
 ```
 
 For a deployment, just the start of what you should see is:
@@ -77,13 +77,13 @@ Pod Template:
 This is still in a semi human readable form and isn't suitable for machine processing. To instead see the raw resource definition, you can use the `-o yaml` display output option to `oc get`.
 
 ```execute
-kubectl get deployment.extensions blog -o yaml
+kubectl get deployment.extensions/blog -o yaml
 ```
 
-Or you prefer to work with JSON rather than YAML, you can use:
+Or if you prefer to work with JSON rather than YAML, you can use:
 
 ```execute
-kubectl get deployment.extensions blog -o json
+kubectl get deployment.extensions/blog -o json
 ```
 
 If you were only interested in specific information from the resource, you can also provide a template for what information would be displayed.
@@ -150,7 +150,7 @@ kubectl explain deployment.spec.template.spec.containers
 
 Look closely at the above commands though and you will see that when running `kubectl explain`, instead of using the full name of the resource type `deployment.extensions`, we used just `deployment`.
 
-The `kubectl explain` command doesn't work when the full resource type name is used. So we rely on the fact that usually it is sufficient to use the un-scoped name of a resource with commands.
+The `kubectl explain` command doesn't work when the full resource type name is used. So we rely on the fact that it is usually sufficient to use the un-scoped name of a resource with commands.
 
 For example, instead of:
 
@@ -178,6 +178,20 @@ To see a full list of the resource types available in a Kubernetes cluster, alon
 kubectl api-resources
 ```
 
+Another point of confusion that can arise when looking at different information about Kubernetes, is that commands such as `oc get` and `oc describe` accept multiple formats for passing the name of a resource. As well as being able to say:
+
+```execute
+kubectl get deployment/blog
+```
+
+you can separate the name into a separate agrument from the resource type:
+
+```execute
+kubectl get deployment blog
+```
+
+So be prepared to see lots of variation on how both resource types and full resource names are represented.
+
 Finally, there is one special alias that exists called `all`. This maps to a list of the core Kubernetes resource objects.
 
 ```execute
@@ -199,9 +213,9 @@ replicaset.apps/blog-db-d75f8997
 route.route.openshift.io/blog-96s5l
 ```
 
-You may note though that `ingress.extensions/blog` does appear. This is because it isn't categorised as being one of the core resource objects.
+You may note that `ingress.extensions/blog` does appear. This is because it isn't categorised as being one of the core resource objects.
 
-Where you want to query on multiple resource object types, it is better to list them by name.
+Where you want to query on multiple resource object types, rather than use `all`, which often isn't all of what you want, you can list all the resource type names separated by a comma.
 
 ```execute
 kubectl get deployment,service,ingress,secret,configmap,pvc -o name
@@ -230,4 +244,4 @@ persistentvolumeclaim/blog-database
 persistentvolumeclaim/blog-media
 ```
 
-In the output of both of these commands you will see some additional resource objects that weren't listed when we created the deployments. We will see what some of these are later. In the next section we will also look at how you can be more selective on what is queried based on the labels applied to the resource objects.
+In the output of both of these commands you will see some additional resource objects that weren't listed when we created the deployments. We will touch on what some of these are later.
