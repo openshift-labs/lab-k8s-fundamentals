@@ -151,7 +151,7 @@ kubectl explain deployment.spec.template.spec.containers
 
 Look closely at the above commands though and you will see that when running `kubectl explain`, instead of using the full name of the resource type `deployment.extensions`, we used just `deployment`.
 
-The `kubectl explain` command doesn't work when the full resource type name is used. So we rely on the fact that it is usually sufficient to use the un-scoped name of a resource with commands.
+The `kubectl explain` command doesn't work when the full resource type name is used, so we rely on the fact that it is usually sufficient to use the un-scoped name of a resource with commands.
 
 For example, instead of:
 
@@ -185,7 +185,7 @@ Another point of confusion that can arise when looking at different information 
 kubectl get deployment/blog
 ```
 
-you can separate the name into a separate agrument from the resource type:
+you can separate the name into a separate argument from the resource type:
 
 ```execute
 kubectl get deployment blog
