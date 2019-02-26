@@ -53,7 +53,7 @@ blog  2        2        2           2          5m   frontend    openshiftkatacod
 
 Labels in Kubernetes are very important and are used in various ways to create links between resources to indicate they are related, or part of the same application.
 
-To see much more detailed information about a resource `oc describe` can be used.
+To see much more detailed information about a resource `kubectl describe` can be used.
 
 ```execute
 kubectl describe deployment.extensions/blog
@@ -75,7 +75,7 @@ Pod Template:
     ....
 ```
 
-This is still in a semi human readable form and isn't suitable for machine processing. To instead see the raw resource definition, you can use the `-o yaml` display output option to `oc get`.
+This is still in a semi human readable form and isn't suitable for machine processing. To instead see the raw resource definition, you can use the `-o yaml` display output option to `kubectl get`.
 
 ```execute
 kubectl get deployment.extensions/blog -o yaml
@@ -179,7 +179,7 @@ To see a full list of the resource types available in a Kubernetes cluster, alon
 kubectl api-resources
 ```
 
-Another point of confusion that can arise when looking at different information about Kubernetes, is that commands such as `oc get` and `oc describe` accept multiple formats for passing the name of a resource. As well as being able to say:
+Another point of confusion that can arise when looking at different information about Kubernetes, is that commands such as `kubectl get` and `kubectl describe` accept multiple formats for passing the name of a resource. As well as being able to say:
 
 ```execute
 kubectl get deployment/blog
@@ -214,7 +214,7 @@ replicaset.apps/blog-db-d75f8997
 route.route.openshift.io/blog-96s5l
 ```
 
-You may note that `ingress.extensions/blog` does appear. This is because it isn't categorised as being one of the core resource objects.
+You may note that `ingress.extensions/blog` doesn't appear. This is because it isn't categorised as being one of the core resource objects.
 
 Where you want to query on multiple resource object types, rather than use `all`, which often isn't all of what you want, you can list all the resource type names separated by a comma.
 

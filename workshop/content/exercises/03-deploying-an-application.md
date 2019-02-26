@@ -6,7 +6,7 @@ NextPage: 04-creating-the-resources
 
 Now you have checked your access to the Kubernetes cluster is working, we are going to immediately jump in and deploy a complete application, consisting of a front end web application implementing a blog site, along with a PostgreSQL database for storing the blog posts.
 
-This is to show you how quickly you can deploy a complete application to Kubernetes if you already have the configuration. Once the complete application has been deployed, we will start to pull the application and the configuration apart, and deploy it over again in smaller steps, so you can understand how it fits together and how it uses Kubernetes.
+This is to show you how quickly you can deploy a complete application to Kubernetes if you already have the configuration. Once the complete application has been deployed, we will start to pull the application and the configuration apart, and deploy parts of it over again in smaller steps, so you can understand how it fits together and how it uses Kubernetes.
 
 The first part of the application we want to deploy is the PostgreSQL database. The set of resources for deploying this can be found in the `database-all.yaml` file.
 
@@ -61,7 +61,7 @@ If you want to have a scan through the contents of this file, run:
 cat frontend-all.yaml
 ```
 
-To see what resources would be created from this file, run `oc apply` with the `--dry-run` option:
+To see what resources would be created from this file, run `kubectl apply` with the `--dry-run` option:
 
 ```execute
 kubectl apply -f frontend-all.yaml --dry-run
