@@ -38,7 +38,7 @@ persistentvolumeclaim/blog-database
 persistentvolumeclaim/blog-media
 ```
 
-This includes all resources from the current project of the listed types. The list therefore included resources for the front end web application, the database, as well as special resources related to service accounts that exist in the project.
+This includes all resources from the current project of the listed types. The list therefore included resources for the front end web application, the database, as well as special resources related to service accounts that have been pre-created in the namespace you are working in.
 
 In order to narrow the results down so it shows just the resources for the front end web application, we can add to the `kubectl get` command a label selector using the `-l` or `--selector` option.
 
