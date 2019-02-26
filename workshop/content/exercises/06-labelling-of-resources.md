@@ -40,7 +40,7 @@ persistentvolumeclaim/blog-media
 
 This includes all resources from the current project of the listed types. The list therefore included resources for the front end web application, the database, as well as special resources related to service accounts that exist in the project.
 
-In order to narrow the results down so it shows just the resources for the front end web application, we can add to the `kubectl get` command a label selector using the `-l` or `--selector` option..
+In order to narrow the results down so it shows just the resources for the front end web application, we can add to the `kubectl get` command a label selector using the `-l` or `--selector` option.
 
 ```execute
 kubectl get deployment,service,ingress,secret,configmap,pvc -o name -l app=blog
@@ -56,7 +56,7 @@ configmap/blog-settings
 persistentvolumeclaim/blog-media
 ```
 
-The format of value passed to the option is `label-name=label-value`.
+The format of the value passed to the option is `label-name=label-value`.
 
 For the sample application you are deploying, all resources for the front end web application were given a label of `app=blog`.
 
@@ -66,7 +66,7 @@ In the case of the database, they were all given a label of `app=blog-db`. For t
 kubectl get deployment,service,ingress,secret,configmap,pvc -o name -l app=blog-db
 ```
 
-should yield:
+should yield the separate resources:
 
 ```
 deployment.extensions/blog-db
@@ -95,4 +95,4 @@ configmap "blog-settings" deleted
 persistentvolumeclaim "blog-media" deleted
 ```
 
-Having deleted the front end web application, we will now re-deploy it, but this time we will do it one step at a time so you can understand what each of the resources is doing.
+Having deleted the front end web application, we will now re-deploy it, but this time we will do it one step at a time so you can understand what each of the resources is for and what Kubernetes does in response to the resource definitions being created.
