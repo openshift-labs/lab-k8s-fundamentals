@@ -40,7 +40,7 @@ If you have read any examples about using Kubernetes previously, you may also ha
 The three commands are:
 
 * `kubectl create` - Creates a set of resources from a file. If any resource of the same name exists, it will not be replaced and an error will be displayed.
-* `kubectl apply` - Creates a set of resources from a file. If any resource of the same name exists, it will be replaced.
+* `kubectl apply` - Creates a set of resources from a file. If any resource of the same name exists, the new resource will be merged with the one which already exists.
 * `kubectl replace` - Replace a set of resources from a file. If any of the resources do not already exist, an error will be displayed.
 
 In most cases you can always safely use `kubectl apply`, with the result being that resources will be created if they don't exist, or replaced if they do. The other commands might be used if scripting application creation and you want the checks.
