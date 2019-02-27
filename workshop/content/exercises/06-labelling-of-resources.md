@@ -1,6 +1,7 @@
 ---
 Title: Labelling of Resources
 PrevPage: 05-querying-the-resources
+NextPage: 07-deployment-resource
 ---
 
 The ability to use `kubectl` to query resource definitions and their current status is important because it is the resource definitions which drive Kubernetes and what it does.
@@ -18,8 +19,8 @@ kubectl get deployment,service,ingress,secret,configmap,pvc -o name
 This yielded the output:
 
 ```
-deployment.extensions/blog
-deployment.extensions/blog-db
+deployment.apps/blog
+deployment.apps/blog-db
 service/blog
 service/blog-db
 ingress.extensions/blog
@@ -49,7 +50,7 @@ kubectl get deployment,service,ingress,secret,configmap,pvc -o name -l app=blog
 This should yield:
 
 ```
-deployment.extensions/blog
+deployment.apps/blog
 service/blog
 ingress.extensions/blog
 configmap/blog-settings
@@ -69,7 +70,7 @@ kubectl get deployment,service,ingress,secret,configmap,pvc -o name -l app=blog-
 should yield the separate resources:
 
 ```
-deployment.extensions/blog-db
+deployment.apps/blog-db
 service/blog-db
 secret/blog-credentials
 persistentvolumeclaim/blog-database
@@ -88,7 +89,7 @@ kubectl delete deployment,service,ingress,secret,configmap,pvc -l app=blog
 This should output:
 
 ```
-deployment.extensions "blog" deleted
+deployment.apps "blog" deleted
 service "blog" deleted
 ingress.extensions "blog" deleted
 configmap "blog-settings" deleted

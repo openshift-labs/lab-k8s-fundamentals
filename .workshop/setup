@@ -1,4 +1,6 @@
 #!/bin/bash
 
-envsubst < frontend-all.yaml.in > frontend-all.yaml
-envsubst < database-all.yaml.in > database-all.yaml
+envsubst < application/frontend.yaml.in > application/frontend.yaml
+envsubst < application/database.yaml.in > application/database.yaml
+
+envsubst < frontend/ingress.yaml.in > frontend/ingress.yaml

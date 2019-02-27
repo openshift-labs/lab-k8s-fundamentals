@@ -8,12 +8,12 @@ Now you have checked your access to the Kubernetes cluster is working, we are go
 
 This is to show you how quickly you can deploy a complete application to Kubernetes if you already have the configuration. Once the complete application has been deployed, we will start to pull the application and the configuration apart, and deploy parts of it over again in smaller steps, so you can understand how it fits together and how it uses Kubernetes.
 
-The first part of the application we want to deploy is the PostgreSQL database. The set of resources for deploying this can be found in the `database-all.yaml` file.
+The first part of the application we want to deploy is the PostgreSQL database. The set of resources for deploying this can be found in the `application/database.yaml` file.
 
 If you want to have a scan through the contents of this file, run:
 
 ```execute
-cat database-all.yaml
+cat application/database.yaml
 ```
 
 For this workshop we will be using YAML format files. Kubernetes will also accept JSON format files.
@@ -21,7 +21,7 @@ For this workshop we will be using YAML format files. Kubernetes will also accep
 If you look closely you will see that the file consists of a list of separate resource definitions. Rather than try and parse out what each of these are at this point, you can have Kubernetes tell you what resources it would create when the file is processed. To do this, run:
 
 ```execute
-kubectl apply -f database-all.yaml --dry-run
+kubectl apply -f application/database.yaml --dry-run
 ```
 
 This should output:
@@ -30,7 +30,7 @@ This should output:
 secret/blog-credentials created (dry run)
 service/blog-db created (dry run)
 persistentvolumeclaim/blog-database created (dry run)
-deployment.extensions/blog-db created (dry run)
+deployment.apps/blog-db created (dry run)
 ```
 
 The `kubectl apply` command in this case is what is used to create resources from a configuration file. We however used the `--dry-run` option, which says to tell us what would be created, but don't actually do it. The `--dry-run` option is useful because it will tell you what resources would be created, but also validates the resource definitions and will warn you if you have errors in them.
@@ -53,18 +53,18 @@ kubectl apply --help
 
 Before actually deploying the database, let's also check out what resources would be created for the front end web application implementing the blog site.
 
-The set of resources for deploying this can be found in the `frontend-all.yaml` file.
+The set of resources for deploying this can be found in the `application/frontend.yaml` file.
 
 If you want to have a scan through the contents of this file, run:
 
 ```execute
-cat frontend-all.yaml
+cat application/frontend.yaml
 ```
 
 To see what resources would be created from this file, run `kubectl apply` with the `--dry-run` option:
 
 ```execute
-kubectl apply -f frontend-all.yaml --dry-run
+kubectl apply -f application/frontend.yaml --dry-run
 ```
 
 This should output:
@@ -72,7 +72,7 @@ This should output:
 ```
 configmap/blog-settings created (dry run)
 persistentvolumeclaim/blog-media created (dry run)
-deployment.extensions/blog created (dry run)
+deployment.apps/blog created (dry run)
 service/blog created (dry run)
 ingress.extensions/blog created (dry run)
 ```

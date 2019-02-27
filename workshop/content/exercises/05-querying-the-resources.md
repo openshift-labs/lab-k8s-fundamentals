@@ -14,7 +14,7 @@ There are two primary commands you can use to make queries about any resources. 
 To see a list of all the deployments in the current namespace which have already been created, run:
 
 ```execute
-kubectl get deployment.extensions
+kubectl get deployment.apps
 ```
 
 This should yield output:
@@ -28,7 +28,7 @@ blog-db   1         1         1            1           5m
 To narrow in on a specific resource, the name of that resource can be added to the command:
 
 ```execute
-kubectl get deployment.extensions/blog
+kubectl get deployment.apps/blog
 ```
 
 This should then yield output for just the one resource.
@@ -41,7 +41,7 @@ blog      2         2         2            2           5m
 The output format for the information displayed can be overridden. In many cases, a resource type can be made to display additional information in the table by using the `-o wide` option.
 
 ```execute
-kubectl get deployment.extensions/blog -o wide
+kubectl get deployment.apps/blog -o wide
 ```
 
 In the case of a deployment, this results in details of the containers that would be created from the deployment, the names of the images run to create the containers, and the set of labels applied to the instances of the application created from the deployment.
@@ -56,7 +56,7 @@ Labels in Kubernetes are very important and are used in various ways to create l
 To see much more detailed information about a resource `kubectl describe` can be used.
 
 ```execute
-kubectl describe deployment.extensions/blog
+kubectl describe deployment.apps/blog
 ```
 
 For a deployment, just the start of what you should see is:
@@ -78,13 +78,13 @@ Pod Template:
 This is still in a semi human readable form and isn't suitable for machine processing. To instead see the raw resource definition, you can use the `-o yaml` display output option to `kubectl get`.
 
 ```execute
-kubectl get deployment.extensions/blog -o yaml
+kubectl get deployment.apps/blog -o yaml
 ```
 
 Or if you prefer to work with JSON rather than YAML, you can use:
 
 ```execute
-kubectl get deployment.extensions/blog -o json
+kubectl get deployment.apps/blog -o json
 ```
 
 If you were only interested in specific information from the resource, you can also provide a template for what information would be displayed.
@@ -92,7 +92,7 @@ If you were only interested in specific information from the resource, you can a
 To list the names of the containers created from a deployment, and the images run for each container, you could run:
 
 ```execute
-kubectl get deployment.extensions blog -o template --template '{{range .spec.template.spec.containers}}{{.name}} {{.image}}{{"\n"}}{{end}}'
+kubectl get deployment.apps blog -o template --template '{{range .spec.template.spec.containers}}{{.name}} {{.image}}{{"\n"}}{{end}}'
 ```
 
 This should yield:
@@ -149,14 +149,14 @@ Only the top level attributes are displayed, but you can drill down into any att
 kubectl explain deployment.spec.template.spec.containers
 ```
 
-Look closely at the above commands though and you will see that when running `kubectl explain`, instead of using the full name of the resource type `deployment.extensions`, we used just `deployment`.
+Look closely at the above commands though and you will see that when running `kubectl explain`, instead of using the full name of the resource type `deployment.apps`, we used just `deployment`.
 
 The `kubectl explain` command doesn't work when the full resource type name is used, so we rely on the fact that it is usually sufficient to use the un-scoped name of a resource with commands.
 
 For example, instead of:
 
 ```execute
-kubectl get deployment.extensions
+kubectl get deployment.apps
 ```
 
 you can actually use:
@@ -214,7 +214,9 @@ replicaset.apps/blog-db-d75f8997
 route.route.openshift.io/blog-96s5l
 ```
 
-You may note that `ingress.extensions/blog` doesn't appear. This is because it isn't categorised as being one of the core resource objects.
+Note that you may see here `deployment.apps` being reported as `deployment.extensions`. This is because in this version of Kubernetes, the `deployment` resource type was in a transitional phase where it was being migrated from being under the `extensions` API group to the `apps` API group. The `deployment` resource type is also still in beta preview. In this transition phase Kubernetes appears to get confused sometimes in what it reports.
+
+You may also have noticed that `ingress.extensions/blog` doesn't appear. This is because it isn't categorised as being one of the core resource objects.
 
 Where you want to query on multiple resource object types, rather than use `all`, which often isn't all of what you want, you can list all the resource type names separated by a comma.
 
@@ -225,8 +227,8 @@ kubectl get deployment,service,ingress,secret,configmap,pvc -o name
 This would yield:
 
 ```
-deployment.extensions/blog
-deployment.extensions/blog-db
+deployment.apps/blog
+deployment.apps/blog-db
 service/blog
 service/blog-db
 ingress.extensions/blog

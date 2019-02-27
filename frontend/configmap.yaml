@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: blog-settings
+  labels:
+    app: blog
+data:
+  BLOG_BANNER_COLOR: "#db212e"
