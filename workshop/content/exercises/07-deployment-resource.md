@@ -70,7 +70,7 @@ A second option is to use `kubectl run`.
 kubectl run --help
 ```
 
-This command is preferred as it accepts a number of options for helping you fill out the resource definition with additional key configuration you might need.
+This command accepts numerous options for helping you fill out the resource definition with additional key configuration you might need.
 
 To start to replicate the configuration for our sample application, run:
 
@@ -121,3 +121,35 @@ Maintaining the master copy of the configuration in Kubernetes like this is fine
 The Kubernetes documentation has a discussion about these two different approaches to managing configuration in [Managing Kubernetes Objects Using Imperative Commands](https://kubernetes.io/docs/concepts/overview/object-management-kubectl/imperative-command/) and [Declarative Management of Kubernetes Objects Using Configuration Files](https://kubernetes.io/docs/concepts/overview/object-management-kubectl/declarative-config/).
 
 As it is closer to what you would want to do for a production environment, we will use the latter approach.
+
+For this first attempt towards replicating the front end web application, the output from `kubectl run` has been captured in the file `frontend-v1/deployment.yaml`. You can see the full contents of the directory by running:
+
+```execute
+ls -las frontend-v1
+```
+
+As is, it is only the one file. We could at this point run `kubectl apply` on just this file, but as we go along we will be adding additional files for other resources. We will therefore use the ability of `kubectl apply` to be given a directory of files to process and apply in one operation.
+
+To check what this would do, run `kubectl apply` with the `--dry-run` option against this directory.
+
+```execute
+kubectl apply -f frontend-v1/ --dry-run
+```
+
+This should output:
+
+```
+deployment.apps/blog created (dry run)
+```
+
+Create the `deployment` by running the `kubectl apply` again without ``--dry-run``.
+
+```execute
+kubectl apply -f frontend-v1/
+```
+
+Monitor progress of the deployment so you know when it has completed.
+
+```execute
+kubectl rollout status deployment/blog
+```
