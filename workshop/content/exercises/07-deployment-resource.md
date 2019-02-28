@@ -75,7 +75,7 @@ This command accepts numerous options for helping you fill out the resource defi
 To start to replicate the configuration for our sample application, run:
 
 ```execute
-kubectl run blog --image openshiftkatacoda/blog-django-py:latest --replicas 2 --port 8080 --env BLOG_SITE_NAME="OpenShift Blog" --dry-run -o yaml
+kubectl run blog --image openshiftkatacoda/blog-django-py:latest --labels app=blog --replicas 2 --port 8080 --env BLOG_SITE_NAME="OpenShift Blog" --dry-run -o yaml
 ```
 
 This should produce:
@@ -86,19 +86,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    run: blog
+    app: blog
   name: blog
 spec:
   replicas: 2
   selector:
     matchLabels:
-      run: blog
+      app: blog
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        run: blog
+        app: blog
     spec:
       containers:
       - env:

@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    run: blog
+    app: blog
   name: blog
 spec:
   replicas: 2
   selector:
     matchLabels:
-      run: blog
+      app: blog
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        run: blog
+        app: blog
     spec:
       containers:
       - env:
