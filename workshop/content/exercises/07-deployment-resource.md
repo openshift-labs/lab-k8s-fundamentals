@@ -112,7 +112,7 @@ spec:
 status: {}
 ```
 
-The difference is that it has set the number of replicas of our application that we want to be 2 instead of 1. It has included the port number our application listens on, and has added one of the environment variables we want to be set. It is still far from complete, but it is enough to get us started.
+The difference is that it has set the number of replicas of our application that we want to be 2 instead of 1. It includes the port number our application listens on, and includes one of the environment variables we want to be set. We have also ensured the label used is `app=blog`. This version of the `deployment` is still far from complete, but it is enough to get us started.
 
 One could now re-run the command and leave off the `--dry-run` option and it would create the resource. To make subsequent changes to the resource definition, one could then edit it in place using the `kubectl edit` command.
 
