@@ -1,6 +1,7 @@
 ---
 Title: Deployment Resource
 PrevPage: 06-labelling-of-resources
+NextPage: 08-replicasets-and-pods
 ---
 
 As already highlighted, a key resource created when deploying an application is the `deployment` resource. It specifies the name of the container image to be deployed for an application, how many instances should be started, and the strategy for how the deployment should be managed.
