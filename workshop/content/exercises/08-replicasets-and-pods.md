@@ -73,9 +73,11 @@ To view the resource definitions for the `pods` run:
 kubectl get pod -l app=blog -o yaml
 ```
 
-Here the fields from `spec.template` of the `replicaset` have been used in creating the `pod` definition. The `spec.template` of a `deployment` and `replicaset` is what is referred to as the pod template.
+Here the fields from `spec.template` of the `replicaset` have been used in creating the `pod` resource definition. The `spec.template` of a `deployment` and `replicaset` is what is referred to as the pod template.
 
-In both `replicaset` and `pod` you will see that a lot of additional fields have been added along the way. This is because they are being filled out with defaults for values which weren't specified in the original `deployment`. The inherited defaults may be from the resource type, but also may be inherited in part from the global or namespace configuration. This is the case for the resource limits on CPU and memory, which have been inherited from limits set for the namespace you are working in.
+In both `replicaset` and `pod` you will see that a lot of additional fields have been added along the way. This is because they are being filled out with defaults for values which weren't specified in the original `deployment`. The resource definitions also contain fields which help track the status of whatever the resource represents.
+
+In the case of the inherited defaults, these may be from the resource type, but also may be inherited in part from the global or namespace configuration. This is the case for the resource limits on CPU and memory, which have been inherited from limits set for the namespace you are working in.
 
 In any case, if these defaults turn out not to be correct and you need to change them, or you need to add additional settings, the change should be made in the `deployment`. You should not edit `replicaset` or `pod` directly yourself. Update the `deployment` instead. The instances of `replicaset` and `pod` will be correspondingly updated for you.
 

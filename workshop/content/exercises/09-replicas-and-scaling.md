@@ -63,7 +63,7 @@ kubectl delete `kubectl get pod -l app=blog -o name | head -1`
 
 You should see the `pod` which was targeted being marked as `Terminating` and it will be removed. Because though the desired number of replicas is 2, a new instance of your application will be automatically started to replace it.
 
-When complete, interrupt the `kubectl get --watch` command.
+When complete, interrupt the `kubectl get --watch` command to stop it.
 
 ```execute-1
 <ctrl+c>
