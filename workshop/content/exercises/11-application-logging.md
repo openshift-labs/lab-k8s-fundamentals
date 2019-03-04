@@ -1,7 +1,7 @@
 ---
 Title: Application Logging
 PrevPage: 10-pods-and-containers
-NextPage: 11-accessing-containers
+NextPage: 12-accessing-containers
 ---
 
 Each instance of an application runs in it's own `pod`.
