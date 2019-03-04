@@ -54,7 +54,7 @@ You can simulate this scenario by deleting one of the `pods`. To see what happen
 kubectl get pods -l app=blog --watch
 ```
 
-The `--watch` option to `kubectl pods` says to monitor the pods over time and show any changes.
+The `--watch` option to `kubectl get pods` says to monitor the pods over time and show any changes.
 
 Now from another terminal delete one of the `pods`.
 
