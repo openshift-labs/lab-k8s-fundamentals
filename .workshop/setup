@@ -4,4 +4,6 @@ envsubst < application/frontend.yaml.in > application/frontend.yaml
 envsubst < application/database.yaml.in > application/database.yaml
 
 envsubst < frontend/ingress.yaml.in > frontend/ingress.yaml
+
 envsubst < frontend-v3/ingress.yaml.in > frontend-v3/ingress.yaml
+envsubst < frontend-v4/ingress.yaml.in > frontend-v4/ingress.yaml
