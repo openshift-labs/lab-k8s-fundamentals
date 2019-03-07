@@ -1,5 +1,5 @@
 ---
-Title: Exposing a Service
+Title: Exposing the Service
 PrevPage: 13-service-networking
 NextPage: 15-linking-the-database
 ---

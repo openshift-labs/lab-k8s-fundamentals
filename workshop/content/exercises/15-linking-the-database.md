@@ -1,6 +1,6 @@
 ---
 Title: Linking the Database
-PrevPage: 14-exposing-a-service
+PrevPage: 14-exposing-the-service
 NextPage: ../finish
 ---
 
