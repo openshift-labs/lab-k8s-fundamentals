@@ -111,4 +111,10 @@ http://blog.%project_namespace%.svc:8080
 
 where `%project_namespace%` is the subdomain added for the namespace.
 
-Note that this still isn't accessible outside of the Kubernetes cluster, extra steps are required to expose a `service` outside of the cluster.
+You can test it works by running:
+
+```execute
+curl http://blog.%project_namespace%.svc:8080
+```
+
+Note that this still isn't accessible outside of the Kubernetes cluster, extra steps are required to expose a `service` outside of the cluster. The `curl` command only works because the terminal you are using is running as a `pod` in the same Kubernetes cluster.
