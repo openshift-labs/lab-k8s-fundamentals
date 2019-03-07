@@ -1,7 +1,7 @@
 ---
 Title: Linking the Database
 PrevPage: 14-exposing-the-service
-NextPage: ../finish
+NextPage: 16-setting-up-database
 ---
 
 The front end web application is running and is accessible to the public internet. At this point it is using the file based SQLite database. This database is local to each instance, not shared between all (making in unsuited to a scaled application), and any data is lost whenever the `pod` restarts.
