@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: blog
+  name: blog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: blog
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: blog
+    spec:
+      containers:
+      - env:
+        - name: BLOG_SITE_NAME
+          value: OpenShift Blog
+        image: openshiftkatacoda/blog-django-py:latest
+        name: blog
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
