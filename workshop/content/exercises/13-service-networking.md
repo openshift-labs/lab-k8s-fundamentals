@@ -1,7 +1,7 @@
 ---
 Title: Service Networking
 PrevPage: 12-accessing-containers
-NextPage: ../finish
+NextPage: 14-exposing-a-service
 ---
 
 The `pod` corresponding to each instance of your application is ephemeral. If it dies it is not resurrected. The `replicaset` ensures that a `pod` that has died is replaced with a new instance, as well as ensuring the correct number of `pods` exist when scaling the number of replicas up or down. When a new `pod` is created, it will always have a new name.
