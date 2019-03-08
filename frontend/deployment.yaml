@@ -15,7 +15,7 @@ spec:
         app: blog
     spec:
       containers:
-      - name: frontend
+      - name: blog
         image: openshiftkatacoda/blog-django-py:latest
         ports:
         - containerPort: 8080
