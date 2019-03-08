@@ -60,13 +60,13 @@ kubectl set env deployment/blog DATABASE_HOST=blog-db --dry-run -o yaml
 From the output, you can see that along side the existing `BLOG_SITE_NAME` environment variable, you now have the `DATABASE_HOST` environment variable. This is under the `spec.template.spec.containers.env` setting.
 
 ```
-spec:
-  containers:
-  - env:
-    - name: BLOG_SITE_NAME
-      value: OpenShift Blog
-    - name: DATABASE_HOST
-      value: blog-db
+    spec:
+      containers:
+      - env:
+        - name: BLOG_SITE_NAME
+          value: OpenShift Blog
+        - name: DATABASE_HOST
+          value: blog-db
 ```
 
 The database credentials could be added in a similar way, but for this application we already have those stored in the `secret` for the database. You can view the `secret` called `blog-credentials`:
@@ -95,26 +95,26 @@ kubectl set env deployment/blog --from secret/blog-credentials --dry-run -o yaml
 For these, the `spec.template.spec.containers.env` setting would need to be updated to:
 
 ```
-spec:
-  containers:
-  - env:
-    - name: BLOG_SITE_NAME
-      value: OpenShift Blog
-    - name: DATABASE_NAME
-      valueFrom:
-        secretKeyRef:
-          key: database-name
-          name: blog-credentials
-    - name: DATABASE_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          key: database-password
-          name: blog-credentials
-    - name: DATABASE_USER
-      valueFrom:
-        secretKeyRef:
-          key: database-user
-          name: blog-credentials
+    spec:
+      containers:
+      - env:
+        - name: BLOG_SITE_NAME
+          value: OpenShift Blog
+        - name: DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              key: database-name
+              name: blog-credentials
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: database-password
+              name: blog-credentials
+        - name: DATABASE_USER
+          valueFrom:
+            secretKeyRef:
+              key: database-user
+              name: blog-credentials
 ```
 
 Combining all of these we get:
