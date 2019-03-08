@@ -9,11 +9,6 @@ spec:
   selector:
     matchLabels:
       app: blog
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
   template:
     metadata:
       labels:
@@ -22,13 +17,8 @@ spec:
       containers:
       - name: frontend
         image: openshiftkatacoda/blog-django-py:latest
-        imagePullPolicy: IfNotPresent
-        resources:
-          limits:
-            memory: 256Mi
         ports:
         - containerPort: 8080
-          protocol: TCP
         env:
         - name: BLOG_SITE_NAME
           value: OpenShift Blog
@@ -49,34 +39,10 @@ spec:
             secretKeyRef:
               key: database-name
               name: blog-credentials
-        readinessProbe:
-          periodSeconds: 10
-          timeoutSeconds: 1
-          successThreshold: 1
-          failureThreshold: 3
-          httpGet:
-            scheme: HTTP
-            port: 8080
-            path: "/healthz/ready"
-        livenessProbe:
-          periodSeconds: 10
-          timeoutSeconds: 1
-          successThreshold: 1
-          failureThreshold: 3
-          httpGet:
-            scheme: HTTP
-            port: 8080
-            path: "/healthz/alive"
         volumeMounts:
         - name: media
           mountPath: "/opt/app-root/src/media"
-        - name: settings
-          mountPath: "/opt/app-root/src/settings"
       volumes:
       - name: media
         persistentVolumeClaim:
           claimName: blog-media
-      - name: settings
-        configMap:
-          defaultMode: 420
-          name: blog-settings
