@@ -34,37 +34,37 @@ kubectl get replicaset -l app=blog -o yaml
 In this you will see that the `spec` section contains:
 
 ```
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: blog
-      pod-template-hash: "896156207"
-  template:
-    metadata:
-      creationTimestamp: null
-      labels:
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
         app: blog
         pod-template-hash: "896156207"
-    spec:
-      containers:
-      - env:
-        - name: BLOG_SITE_NAME
-          value: OpenShift Blog
-        image: openshiftkatacoda/blog-django-py:latest
-        imagePullPolicy: Always
-        name: blog
-        ports:
-        - containerPort: 8080
-          protocol: TCP
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: blog
+          pod-template-hash: "896156207"
+      spec:
+        containers:
+        - env:
+          - name: BLOG_SITE_NAME
+            value: OpenShift Blog
+          image: openshiftkatacoda/blog-django-py:latest
+          imagePullPolicy: Always
+          name: blog
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
 ```
 
 This has been filled out with what was provided in the `spec` portion of the `deployment`.
