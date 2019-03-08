@@ -81,8 +81,8 @@ Another application running in the same namespace can connect on this IP address
 The `service` will know what the corresponding `pods` are that traffic should be load balanced across by virtue of the label selector defined in the `service`. This is the `spec.selector` value:
 
 ```
-selector:
-  app: blog
+  selector:
+    app: blog
 ```
 
 This means that the IP addresses for the `pods` resulting from a query of:

@@ -129,24 +129,18 @@ For this first attempt towards replicating the front end web application, the ou
 ls -las frontend-v1
 ```
 
-As is, it is only the one file. We could at this point run `kubectl apply` on just this file, but as we go along we will be adding additional files for other resources. We will therefore use the ability of `kubectl apply` to be given a directory of files to process and apply in one operation.
+As is, it is only the one file. We could at this point run `kubectl apply` on just this file, but as we go along we will be adding additional files for other resources. We will therefore continue to use the ability of `kubectl apply` to be given a directory of files to process and apply them in one operation.
 
-To check what this would do, run `kubectl apply` with the `--dry-run` option against this directory.
-
-```execute
-kubectl apply -f frontend-v1/ --dry-run
-```
-
-This should output:
-
-```
-deployment.apps/blog created (dry run)
-```
-
-Create the `deployment` by running the `kubectl apply` again without ``--dry-run``.
+Create the `deployment` by running:
 
 ```execute
 kubectl apply -f frontend-v1/
+```
+
+It should output:
+
+```
+deployment.apps/blog created
 ```
 
 Monitor progress of the deployment so you know when it has completed.

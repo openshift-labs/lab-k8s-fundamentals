@@ -10,6 +10,8 @@ Having created the `deployment` run:
 kubectl get all -o name -l app=blog
 ```
 
+The `all` value is not a resource type, but a short hand alias for the core Kubernetes resource types. It shows what we need here, but to be sure to get everything you want, you are usually better to list the resource types explicitly.
+
 The output should be similar to:
 
 ```

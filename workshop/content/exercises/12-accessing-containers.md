@@ -30,7 +30,7 @@ and can interact with the application processes:
 ps x
 ```
 
-The only processes you will be able to see are those for the instance of your application running in that container. You cannot see processes running in other containers of the same `pod`.
+The only processes you will be able to see are those for the instance of your application running in that container. You cannot see processes running in other containers of the same `pod`, or operating system processes.
 
 Run:
 

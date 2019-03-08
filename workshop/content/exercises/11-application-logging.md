@@ -30,4 +30,4 @@ Were there multiple containers in the `pod`, you would need to name the containe
 
 If you wanted to follow the output of the running application, you can use the `-f` or `--follow` option.
 
-When you have multiple replicas of your application, you would need to fetch the application logs from each `pod`. A Kubernetes cluster may optionally have a service deployed for aggregated logging, in which case you could access that service to view logs for all instances of application at the same time.
+When you have multiple replicas of your application, you would need to fetch the application logs from each `pod`. A Kubernetes cluster may optionally have a service deployed for aggregated logging, in which case you could access that service to view logs for all instances of the application at the same time.

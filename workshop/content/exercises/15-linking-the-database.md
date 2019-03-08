@@ -4,7 +4,7 @@ PrevPage: 14-exposing-the-service
 NextPage: 16-setting-up-database
 ---
 
-The front end web application is running and is accessible to the public internet. At this point it is using the file based SQLite database. This database is local to each instance, not shared between all (making in unsuited to a scaled application), and any data is lost whenever the `pod` restarts.
+The front end web application is running and is accessible to the public internet. At this point it is using a file based SQLite database which has been pre-populated with some posts. This database is local to each instance, not shared between all (making in unsuited to a scaled application), and any changes to data will be lost whenever the `pod` restarts.
 
 To provide persistence for data, and have all instances of the application using the same database, we will configure the front end web application to use the separate Postgresql database which is already running.
 
@@ -75,12 +75,12 @@ The database credentials could be added in a similar way, but for this applicati
 kubectl get secret/blog-credentials -o yaml
 ```
 
-Within the output you will see the `data` section holding values similar to:
+Within the output you will see the `data` section holding values:
 
 ```
 data:
   database-name: YmxvZw==
-  database-password: cG9ydGFsLXdvcmtzaG9wLTRsZTAw
+  database-password: dG9wLXNlY3JldA==
   database-user: YmxvZw==
 ```
 

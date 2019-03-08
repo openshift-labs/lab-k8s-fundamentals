@@ -4,15 +4,13 @@ PrevPage: 03-deploying-an-application
 NextPage: 05-querying-the-resources
 ---
 
-By doing a dry run deployment, you have seen the resources that will be created from the configuration file. You will note that for the application component, there isn't just one resource definition, but a number for each.
-
-To actually deploy the database component, now run:
+By doing a dry run deployment, you have seen the resources that will be created. To actually deploy the database component, now run:
 
 ```execute
 kubectl apply -f database/
 ```
 
-As with the dry run, `kubectl apply` will list the resources, except this time the resources will be created as we didn't supply `--dry-run`.
+As with the dry run, `kubectl apply` will list the resources, except this time the resources will be created.
 
 ```
 secret/blog-credentials created
@@ -40,7 +38,6 @@ kubectl apply -f frontend/
 This should output:
 
 ```
-configmap/blog-settings created
 persistentvolumeclaim/blog-media created
 deployment.apps/blog created
 service/blog created
@@ -61,4 +58,4 @@ In this example, the URL for accessing the web application will be:
 
 http://blog-%project_namespace%.%cluster_subdomain%
 
-There will not be any blog posts displayed as yet, we will get to setting up and populating the database later.
+Visit the front end web application by clicking on this link. There will not be any blog posts displayed as yet. We will get to setting up and populating the database later.

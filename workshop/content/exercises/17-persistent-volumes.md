@@ -33,7 +33,7 @@ spec:
 
 This says that the storage should be at least of size 1Gi and that the access mode should be `ReadWriteMany`.
 
-Kubernetes supports three different access mode for storage.
+Kubernetes supports three different access modes for storage.
 
 * `ReadWriteOnce` (RWO) - The volume can be mounted as read/write by a single node.
 * `ReadOnlyMany` (ROX) - The volume can be mounted as read-only by many nodes.
@@ -41,7 +41,7 @@ Kubernetes supports three different access mode for storage.
 
 What access modes for storage are available will depend on the Kubernetes cluster.
 
-For the front end web application we are using, because we want to be able run multiple instances, we need storage with an access mode that allows it to be mounted on multiple nodes in the Kubernetes cluster. This is because instances of the application could run on different nodes. This is why `ReadWriteMany` is requested.
+For the front end web application we are using, because we want to be able to run multiple instances, we need storage with an access mode that allows it to be mounted on multiple nodes in the Kubernetes cluster. This is because instances of the application could run on different nodes. This is why `ReadWriteMany` is requested.
 
 In contrast, the database will only ever have one instance and so storage with access mode `ReadWriteOnce` is sufficient.
 
@@ -88,3 +88,5 @@ ingress.extensions/blog unchanged
 persistentvolumeclaim/blog-media created
 service/blog unchanged
 ```
+
+Both components of the application, the database and the front end web application are fully deployed once again.
