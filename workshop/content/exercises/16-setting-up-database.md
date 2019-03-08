@@ -1,7 +1,7 @@
 ---
 Title: Setting up Database
-PrevPage: 14-exposing-the-service
-NextPage: ../finish
+PrevPage: 15-linking-the-database
+NextPage: 17-persistent-volumes
 ---
 
 For the front end web application being used, the database will be initialised if required when the application first starts up. What hasn't yet been done is to setup an administrator password for the front end web application itself. You might also want to load in some initial data, such as some posts for our blog site.
