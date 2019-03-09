@@ -1,7 +1,22 @@
 #!/bin/bash
 
-envsubst < application/frontend.yaml.in > application/frontend.yaml
-envsubst < application/database.yaml.in > application/database.yaml
+cd /opt/app-root
+
+if [ x"$HOMEROOM_LINK" != x"" ]; then
+    export AUDIENCE_LINK=$HOMEROOM_LINK
+else
+    if [ x"$WORKSHOP_LINK" != x"" ]; then
+        export AUDIENCE_LINK=$WORKSHOP_LINK
+    else
+        if [ x"$JUPYTERHUB_ROUTE" != "" ]; then
+            export AUDIENCE_LINK=$JUPYTERHUB_ROUTE
+        fi
+    fi
+fi
+
+envsubst < workshop/slides/notice.md.in > workshop/slides/notice.md
+
+cd /opt/app-root/src
 
 envsubst < frontend/ingress.yaml.in > frontend/ingress.yaml
 
