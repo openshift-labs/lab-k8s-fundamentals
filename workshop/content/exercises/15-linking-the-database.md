@@ -4,7 +4,7 @@ PrevPage: 14-exposing-the-service
 NextPage: 16-setting-up-database
 ---
 
-The front end web application is running and is accessible to the public internet. At this point it is using a file based SQLite database which has been pre-populated with some posts. This database is local to each instance, not shared between all (making in unsuited to a scaled application), and any changes to data will be lost whenever the `pod` restarts.
+The front end web application is running and is accessible to the public internet. At this point it is using a file based SQLite database which has been pre-populated with some posts. This database is local to each instance, not shared between all (making it unsuited to a scaled application), and any changes to data will be lost whenever the `pod` restarts.
 
 To provide persistence for data, and have all instances of the application using the same database, we will configure the front end web application to use the separate Postgresql database which is already running.
 

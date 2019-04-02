@@ -28,6 +28,10 @@ For general information on Kubernetes see:
 
 * https://kubernetes.io/
 
-If you want to try Kubernetes on your own computer, see Minikube
+If you want to try Kubernetes on your own computer, see Minikube:
 
 * https://kubernetes.io/docs/setup/minikube/
+
+If you want to see further simple examples of using Kubernetes:
+
+* http://kubernetesbyexample.com/
