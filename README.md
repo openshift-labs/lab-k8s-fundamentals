@@ -55,7 +55,7 @@ To deploy the workshop for multiple users, you will need to be a cluster admin o
 To deploy the workshop for multiple users, run:
 
 ```
-oc new-app https://raw.githubusercontent.com/openshift-labs/workshop-jupyterhub/develop/templates/learning-portal-production.json \
+oc new-app https://raw.githubusercontent.com/openshift-labs/workshop-jupyterhub/master/templates/learning-portal-production.json \
   --param TERMINAL_IMAGE=quay.io/openshiftlabs/lab-kubernetes-fundamentals:master \
   --param PROJECT_NAME=workshop \
   --param APPLICATION_NAME=portal \
