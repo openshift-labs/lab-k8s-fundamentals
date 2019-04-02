@@ -8,7 +8,7 @@ else
     if [ x"$WORKSHOP_LINK" != x"" ]; then
         export AUDIENCE_LINK=$WORKSHOP_LINK
     else
-        if [ x"$JUPYTERHUB_ROUTE" != "" ]; then
+        if [ x"$JUPYTERHUB_ROUTE" != x"" ]; then
             export AUDIENCE_LINK=$JUPYTERHUB_ROUTE
         else
             export AUDIENCE_LINK="???"
