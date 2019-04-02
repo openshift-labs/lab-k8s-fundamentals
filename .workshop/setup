@@ -10,6 +10,8 @@ else
     else
         if [ x"$JUPYTERHUB_ROUTE" != "" ]; then
             export AUDIENCE_LINK=$JUPYTERHUB_ROUTE
+        else
+            export AUDIENCE_LINK="???"
         fi
     fi
 fi
