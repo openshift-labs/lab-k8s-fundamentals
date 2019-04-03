@@ -73,16 +73,10 @@ The ``SERVER_LIMIT`` parameter indicates the maximum number of concurrent worksh
 
 The other parameters set timeouts (in seconds) for when a workshop session will be deleted, and quotas on how much resources are permitted to be used for each workshop session.
 
-To clean up everything when the workshop environment is no longer required, ensure that there are no active users. Wait for the idle timeout period to expire and for any workshop sessions and projects for them to be deleted. Then run:
+To clean up everything when the workshop environment is no longer required, run:
 
 ```
-oc delete all,pvc,sa,rolebinding,secret,configmap -l app=portal
-```
-
-The value of the ``app`` label should be the name of the deployment. Next run:
-
-```
-oc delete clusterroles,clusterrolebindings -l app=portal-workshop
+oc delete all,pvc,sa,rolebinding,secret,configmap,clusterroles,clusterrolebindings -l app=portal-workshop,spawner=learning-portal
 ```
 
 The ``app`` label should be the combination of the deployment name and the name of the project.
