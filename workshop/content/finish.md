@@ -1,6 +1,7 @@
 ---
 Sort: 2
 Title: Workshop Summary
+PrevPage: exercises/17-persistent-volumes.md
 ExitSign: Finish Workshop
 ---
 
