@@ -21,14 +21,14 @@ oc new-project workshop
 The name of the workshop image is:
 
 ```
-quay.io/openshiftlabs/lab-kubernetes-fundamentals:1.1
+quay.io/openshiftlabs/lab-kubernetes-fundamentals:1.2
 ```
 
 To deploy the workshop run:
 
 ```
 oc new-app https://raw.githubusercontent.com/openshift-labs/workshop-dashboard/master/templates/production.json \
-  --param TERMINAL_IMAGE="quay.io/openshiftlabs/lab-kubernetes-fundamentals:1.1"
+  --param TERMINAL_IMAGE="quay.io/openshiftlabs/lab-kubernetes-fundamentals:1.2"
 ```
 
 The template used to deploy the workshop ensures that access to the workshop is secured and is only accessible to users who are listed as admins to the project into which it is deployed.
@@ -56,7 +56,7 @@ To deploy the workshop for multiple users, run:
 
 ```
 oc new-app https://raw.githubusercontent.com/openshift-labs/workshop-spawner/master/templates/learning-portal-production.json \
-  --param TERMINAL_IMAGE=quay.io/openshiftlabs/lab-kubernetes-fundamentals:1.1 \
+  --param TERMINAL_IMAGE=quay.io/openshiftlabs/lab-kubernetes-fundamentals:1.2 \
   --param PROJECT_NAME=workshop \
   --param APPLICATION_NAME=portal \
   --param SERVER_LIMIT=8 \
