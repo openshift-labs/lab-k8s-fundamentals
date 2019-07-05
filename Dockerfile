@@ -1,4 +1,4 @@
-FROM quay.io/openshiftlabs/workshop-dashboard:3.3.1
+FROM quay.io/openshiftlabs/workshop-dashboard:3.3.3
 
 USER root
 
