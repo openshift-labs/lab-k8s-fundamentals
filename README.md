@@ -3,6 +3,10 @@ Lab - Kubernetes Fundamentals
 
 This repository holds source files for a workshop on Kubernetes fundamentals.
 
+Although the workshop is setup to be run on OpenShift, the workshop content itself is generic to Kubernetes and doesn't cover any OpenShift specific topics. OpenShift, as a Kubernetes distribution, is purely being used as a means to host the workshop.
+
+If you want to review the workshop content, you can browse the files and subdirectories under [workshop/content](workshop/content).
+
 The workshop can be deployed standalone for a single user, or in a multi user environment. In both cases you will require OpenShift. Your OpenShift cluster must support persistent volumes of type ``ReadWriteMany`` (``RWX``). In the case of running a multi user workshop, you will need to have cluster admin access to the OpenShift cluster.
 
 ![](terminal.png)
