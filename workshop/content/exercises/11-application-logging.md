@@ -1,9 +1,3 @@
----
-Title: Application Logging
-PrevPage: 10-pods-and-containers
-NextPage: 12-accessing-containers
----
-
 Each instance of an application runs in it's own `pod`.
 
 As you have already seen, you can list the `pods` for the front end web application using:

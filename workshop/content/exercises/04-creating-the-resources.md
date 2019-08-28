@@ -1,9 +1,3 @@
----
-Title: Creating the Resources
-PrevPage: 03-deploying-an-application
-NextPage: 05-querying-the-resources
----
-
 By doing a dry run deployment, you have seen the resources that will be created. To actually deploy the database component, now run:
 
 ```execute

@@ -1,9 +1,3 @@
----
-Title: Labelling of Resources
-PrevPage: 05-querying-the-resources
-NextPage: 07-deployment-resource
----
-
 The ability to use `kubectl` to query resource definitions and their current status is important because it is the resource definitions which drive Kubernetes and what it does.
 
 As we already saw, it isn't a single resource definition which defines everything about the deployment of an application, but a set of resources.

@@ -1,9 +1,3 @@
----
-Title: Accessing the Cluster
-PrevPage: 01-the-openshift-platform
-NextPage: 03-deploying-an-application
----
-
 For the exercises you will be doing, you will be using the `kubectl` command line program to interact with Kubernetes. This is provided for you via the interactive terminal session accessible through the [Terminal](%terminal_url%) tab, here in the workshop environment. You do not need to install anything on your own computer. You will be doing everything here through your web browser. There is no need to login as you are already connected to the Kubernetes cluster you will be using.
 
 The workshop environment also provides you with a web based view into the Kubernetes cluster. This is available through the [Console](%console_url%) tab of the workshop environment. This web based view uses the web interface which is included in OpenShift 4.1. This is included so you can visually see the results of what you do in the exercises, but the exercises do not depend on it. The web interface provided here is different to the web interface that may be provided with other Kubernetes distributions.

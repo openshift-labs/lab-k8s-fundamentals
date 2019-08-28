@@ -1,10 +1,3 @@
----
-Sort: 1
-Title: Workshop Overview
-NextPage: exercises/01-the-openshift-platform
-ExitSign: Start Workshop
----
-
 The [Kubernetes](https://kubernetes.io/) web site describes Kubernetes as:
 
 > an open-source system for automating deployment, scaling, and management of containerized applications.

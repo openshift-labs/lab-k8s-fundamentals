@@ -1,9 +1,3 @@
----
-Title: ReplicaSets and Pods
-PrevPage: 07-deployment-resource
-NextPage: 09-replicas-and-scaling
----
-
 Having created the `deployment` run:
 
 ```execute

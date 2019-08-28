@@ -1,9 +1,3 @@
----
-Title: Deploying an Application
-PrevPage: 02-accessing-the-cluster
-NextPage: 04-creating-the-resources
----
-
 Now you have checked your access to the Kubernetes cluster is working, we are going to immediately jump in and deploy a complete application, consisting of a front end web application implementing a blog site, along with a PostgreSQL database for storing the blog posts.
 
 This is to show you how quickly you can deploy a complete application to Kubernetes if you already have the configuration. Once the complete application has been deployed, we will delete the front end web application component, and deploy it again in steps so you can see how it fits together and how it uses Kubernetes.

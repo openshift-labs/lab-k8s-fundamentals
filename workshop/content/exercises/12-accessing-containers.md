@@ -1,9 +1,3 @@
----
-Title: Accessing Containers
-PrevPage: 11-application-logging
-NextPage: 13-service-networking
----
-
 To gain access to the container in which an instance of an application is running, and run a command, you can use `kubectl exec`.
 
 As with logging, you need to specify the particular `pod` you wan't to access, and if there are multiple containers running in the `pod`, specify which container using the `-c` or `--container` option.

@@ -1,10 +1,3 @@
----
-Sort: 2
-Title: Workshop Summary
-PrevPage: exercises/17-persistent-volumes.md
-ExitSign: Finish Workshop
----
-
 In this workshop you have had an opportunity to get hands on with Kubernetes. In the workshop you deployed an application consisting of a front end web application implementing a blog site, using a back end PostrgreSQL database for storage of posts. For storage of images attached to posts, a persistent volume was used.
 
 The Kubernetes cluster you used was a hosted version of the OpenShift Container Platform.

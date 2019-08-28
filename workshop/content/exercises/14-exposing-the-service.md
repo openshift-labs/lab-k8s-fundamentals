@@ -1,9 +1,3 @@
----
-Title: Exposing the Service
-PrevPage: 13-service-networking
-NextPage: 15-linking-the-database
----
-
 In order to expose a `service` so that it is accessible outside of the Kubernetes cluster, you need to create an `ingress` resource object.
 
 To see the definition for the `ingress` resource object we will use run:
