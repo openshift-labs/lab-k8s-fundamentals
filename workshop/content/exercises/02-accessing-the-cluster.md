@@ -6,7 +6,7 @@ NextPage: 03-deploying-an-application
 
 For the exercises you will be doing, you will be using the `kubectl` command line program to interact with Kubernetes. This is provided for you via the interactive terminal session accessible through the [Terminal](%terminal_url%) tab, here in the workshop environment. You do not need to install anything on your own computer. You will be doing everything here through your web browser. There is no need to login as you are already connected to the Kubernetes cluster you will be using.
 
-The workshop environment also provides you with a web based view into the Kubernetes cluster. This is available through the [Console](%console_url%) tab of the workshop environment. This web based view uses the web interface which will be included in OpenShift 4.0. This is included so you can visually see the results of what you do in the exercises, but the exercises do not depend on it. The web interface provided here is different to the web interface that may be provided with other Kubernetes distributions.
+The workshop environment also provides you with a web based view into the Kubernetes cluster. This is available through the [Console](%console_url%) tab of the workshop environment. This web based view uses the web interface which is included in OpenShift 4.1. This is included so you can visually see the results of what you do in the exercises, but the exercises do not depend on it. The web interface provided here is different to the web interface that may be provided with other Kubernetes distributions.
 
 Before continuing, verify that the `kubectl` command runs and the workshop environment is also functioning. To do this run:
 
@@ -14,7 +14,7 @@ Before continuing, verify that the `kubectl` command runs and the workshop envir
 kubectl version
 ```
 
-Did you type the command in yourself? If you did, click on the command here instead and you will find that it is executed for you. You can click on any command here in the workshop notes which has the <span class="glyphicon glyphicon-play-circle"></span> icon shown to the right of it, and it will be copied to the interactive terminal and run for you.
+Did you type the command in yourself? If you did, click on the command here instead and you will find that it is executed for you. You can click on any command here in the workshop notes which has the <span class="fas fa-play-circle"></span> icon shown to the right of it, and it will be copied to the interactive terminal and run for you.
 
 When run, you should see output similar to:
 
