@@ -20,4 +20,5 @@ modules:
     - exercises/15-linking-the-database
     - exercises/16-setting-up-database
     - exercises/17-persistent-volumes
+    - exercises/18-application-health
     - finish
