@@ -1,5 +1,5 @@
 WORKSHOP_NAME=lab-k8s-fundamentals
-WORKSHOP_IMAGE=quay.io/openshiftlabs/lab-k8s-fundamentals:master
+WORKSHOP_IMAGE=quay.io/openshiftlabs/lab-k8s-fundamentals:1.13
 WORKSHOP_TITLE="Kubernetes Fundamentals"
 WORKSHOP_DESCRIPTION="A workshop introducing developers to Kubernetes"
 SPAWNER_PASSWORD=kubernetes
