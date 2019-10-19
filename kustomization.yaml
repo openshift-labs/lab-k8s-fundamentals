@@ -20,4 +20,4 @@ configMapGenerator:
   - IDLE_TIMEOUT="300"
 
 patches:
-- resources/ingress.yaml
+- .workshop/ingress.yaml
