@@ -16,7 +16,7 @@ configMapGenerator:
   - APPLICATION_NAME="lab-k8s-fundamentals"
   - WORKSHOP_TITLE="Kubernetes Fundamentals"
   - WORKSHOP_DESCRIPTION="A workshop introducing developers to Kubernetes"
-  - TERMINAL_IMAGE="quay.io/openshiftlabs/lab-k8s-fundamentals:1.15"
+  - TERMINAL_IMAGE="quay.io/openshiftlabs/lab-k8s-fundamentals:1.16"
   - RESOURCE_BUDGET="medium"
   - MAX_SESSION_AGE="3600"
   - IDLE_TIMEOUT="300"
