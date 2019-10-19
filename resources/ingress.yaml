@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spawner
+spec:
+  rules:
+  - host: lab-k8s-fundamentals.$(CLUSTER_SUBDOMAIN)
+    http:
+      paths:
+      - path: "/"
+        backend:
+          serviceName: spawner
+          servicePort: 8080

@@ -21,11 +21,5 @@ configMapGenerator:
   - MAX_SESSION_AGE="3600"
   - IDLE_TIMEOUT="300"
 
-vars:
-- name: APPLICATION_NAME
-  objref:
-    apiVersion: v1
-    kind: ConfigMap
-    name: spawner-environ
-  fieldref:
-    fieldPath: data.APPLICATION_NAME
+patches:
+- resources/ingress.yaml
