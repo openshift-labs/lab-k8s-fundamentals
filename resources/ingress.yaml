@@ -2,6 +2,10 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: spawner
+  annotations:
+    homeroom/group: homeroom
+    homeroom/title: "Kubernetes Fundamentals"
+    homeroom/description: "A workshop introducing developers to Kubernetes"
 spec:
   rules:
   - host: lab-k8s-fundamentals.$(CLUSTER_SUBDOMAIN)
