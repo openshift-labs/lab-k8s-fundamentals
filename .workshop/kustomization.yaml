@@ -15,6 +15,7 @@ configMapGenerator:
   env: settings.sh
 
 vars:
+- name: WORKSHOP_TITLE
   objref:
     kind: ConfigMap
     apiVersion: v1
