@@ -14,7 +14,7 @@ configMapGenerator:
   behavior: merge
   env: settings.sh
 
-vars:E
+vars:
   objref:
     kind: ConfigMap
     apiVersion: v1
