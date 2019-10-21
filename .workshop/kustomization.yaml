@@ -14,5 +14,20 @@ configMapGenerator:
   behavior: merge
   env: settings.sh
 
+vars:E
+  objref:
+    kind: ConfigMap
+    apiVersion: v1
+    name: spawner-environ
+  fieldref:
+    fieldpath: data.WORKSHOP_TITLE
+- name: WORKSHOP_DESCRIPTION
+  objref:
+    kind: ConfigMap
+    apiVersion: v1
+    name: spawner-environ
+  fieldref:
+    fieldpath: data.WORKSHOP_DESCRIPTION
+
 patches:
 - ingress.yaml
