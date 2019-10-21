@@ -3,5 +3,5 @@ kind: Ingress
 metadata:
   name: spawner
   annotations:
-    homeroom/title: $(WORKSHOP_TITLE)
-    homeroom/description: $(WORKSHOP_DESCRIPTION)
+    homeroom/title: "Kubernetes Fundamentals"
+    homeroom/description: "A workshop introducing developers to Kubernetes"
