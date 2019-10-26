@@ -5,3 +5,12 @@ metadata:
   annotations:
     homeroom/title: "Kubernetes Fundamentals"
     homeroom/description: "A workshop introducing developers to Kubernetes"
+spec:
+  rules:
+  - http:
+      paths:
+      - host: "lab-k8s-fundamentals.${CLUSTER_SUBDOMAIN}"
+        path: "/"
+        backend:
+          serviceName: spawner
+          servicePort: 8080
